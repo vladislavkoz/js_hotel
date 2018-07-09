@@ -1,0 +1,39 @@
+{
+  "reservations": [
+    {
+      "id": 1,
+      "clientName": "client",
+      "clientTelephone": "46564654654654",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "LUX"
+    },
+    {
+      "clientName": "vlad",
+      "clientTelephone": "+3805954166",
+      "apartmentAccommodation": "sgl",
+      "apartmentComfortType": "econom",
+      "id": 2
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "jkhkjhk",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "ECONOM",
+      "id": 3
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "jkhkjhk",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "ECONOM",
+      "id": 4
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "jkhkjhk",
+      "apartmentAccommodation": "Choose...",
+      "apartmentComfortType": "ECONOM",
+      "id": 5
+    }
+  ]
+}

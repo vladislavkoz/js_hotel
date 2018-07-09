@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>Bootstrap 4 Layout</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<div class="container">
+
+    <nav class="navbar form-row navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand col-md-12 " href="#">Hotel Paradise</a>
+    </nav>
+    <div class="bg-dark text-center form-row">
+        <br>
+        <label for="template-reservation" class="text-white col-md-12 text-uppercase">Reservations book</label>
+        <br>
+    </div>
+    <div class="form-row bg-warning border">
+        <p class="col-md-3">Full name</p>
+        <p class="col-md-3">Telephone number</p>
+        <p class="col-md-3">Accommodation type</p>
+        <p class="col-md-3">Comfort type</p>
+    </div>
+    <template id="template-reservation">
+        <div id="post" class="form-row border">
+            <p id="name" class="col-md-3"></p>
+            <p id="telephone" class="col-md-3"></p>
+            <p id="comfortType" class="col-md-3"></p>
+            <p id="accommodation" class="col-md-3"></p>
+        </div>
+    </template>
+
+    <div id="reservations">
+
+    </div>
+
+    <br>
+    <br>
+    <div class="form-row">
+        <form class="form-group border col-md-12" id="addNewReservation">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="clientName">Full Name</label>
+                    <input type="text" class="form-control" id="clientName" placeholder="Enter name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="clientPhone">Phone number</label>
+                    <input type="text" class="form-control" id="clientPhone" placeholder="Enter phone number">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="apartmentAccommodation">Accommodation type: </label>
+                    <!--<input type="text" class="form-control" id="apartmentAccommodation" placeholder="Enter accommodation">-->
+                    <select class="custom-select col-md-6" id="apartmentAccommodation">
+                        <option selected>Choose...</option>
+                        <option value="SGL">SGL</option>
+                        <option value="DBL">DGL</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="apartmentComfortType">Comfort type: </label>
+                    <!--<input type="text" class="form-control" id="apartmentComfortType" placeholder="Enter comfort">-->
+                    <select class="custom-select col-md-6" id="apartmentComfortType">
+                        <option selected>Choose...</option>
+                        <option value="ECONOM">ECONOM</option>
+                        <option value="STANDART">STANDART</option>
+                        <option value="LUX">LUX</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row text-center">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success center-block">RESERVE</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>
