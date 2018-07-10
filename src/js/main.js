@@ -3,15 +3,18 @@ var reservationsUrl = 'http://localhost:3000/reservations';
 
 function init() {
     loadReservations().then(renderReservations);
-    var reservationForm = document.getElementById("addNewReservation");
+    let reservationForm = document.getElementById("addNewReservation");
     reservationForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        AddNewReservation()
-            .then(loadReservations)
-            .then(renderReservations);
+        if (validation()){
+            AddNewReservation()
+                .then(loadReservations)
+                .then(renderReservations);
+            removeAllValidation();
+            resetReservationForm();
+        }
     })
 }
-
 
 function loadReservations(){
     return fetch(reservationsUrl).then(response => response.json());
@@ -23,7 +26,7 @@ function renderReservations(reservations){
     let reservationsList = document.getElementById('reservations');
     reservationsList.innerHTML = '';
     for (let res of reservations) {
-         let reservationClone = templateContent.cloneNode(true);
+        let reservationClone = templateContent.cloneNode(true);
         updateReservationElement(reservationClone, res);
         reservationsList.appendChild(reservationClone);
     }
@@ -41,13 +44,35 @@ function AddNewReservation(){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    })
+    });
+}
+
+function resetReservationForm() {
+    var reservationForm = document.getElementById("addNewReservation");
+    reservationForm.reset();
 }
 
 function updateReservationElement(element, res) {
+    element.id = res.id;
     element.querySelector('#name').innerText = res.clientName;
     element.querySelector('#telephone').innerText = res.clientTelephone;
     element.querySelector('#comfortType').innerText = res.apartmentAccommodation;
     element.querySelector('#accommodation').innerText = res.apartmentComfortType;
 }
 
+function removeReservation(element){
+    fetch(reservationsUrl + '/' + element.id,{
+        method: 'delete'
+    })
+        .then(response => response.json());
+    element.remove();
+}
+
+function editReservation(element) {
+    let content = document.getElementById('content');
+    content.innerHTML = '';
+}
+
+function showReservationBook(){
+
+}
