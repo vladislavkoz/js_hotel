@@ -27,6 +27,13 @@
       "apartmentAccommodation": "SGL",
       "apartmentComfortType": "ECONOM",
       "id": 5
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "0685459166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "ECONOM",
+      "id": 6
     }
   ]
 }

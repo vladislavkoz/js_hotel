@@ -12,63 +12,6 @@
 </head>
 <body>
 <div class="container" id="container">
-    <div class="header">
-            <nav class="navbar form-row navbar-expand-lg navbar-dark bg-dark text-center">
-                <a class="navbar-brand" href="index.html">Hotel Paradise</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">ReservationBook</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Apartments</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                </ul>
-        </nav>
-    </div>
-        <div id="content">
-    <div class="form-row">
-        <form class="form-group border col-md-12" id="addNewReservation">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="clientName">Full Name</label>
-                    <input type="text" class="required field form-control" id="clientName" placeholder="Enter name">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="clientPhone">Phone number</label>
-                    <input type="text" class="phoneNumber form-control" id="clientPhone" placeholder="(xxx) xxx-xx-xx">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="apartmentAccommodation">Accommodation type: </label>
-                    <select class="sel custom-select col-md-6" id="apartmentAccommodation">
-                        <option selected>Choose</option>
-                        <option value="SGL">SGL</option>
-                        <option value="DBL">DGL</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="apartmentComfortType">Comfort type: </label>
-                    <select class="required sel custom-select col-md-6" id="apartmentComfortType">
-                        <option>Choose</option>
-                        <option value="ECONOM">ECONOM</option>
-                        <option value="STANDART">STANDART</option>
-                        <option value="LUX">LUX</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-row text-center">
-                <div class="col-12">
-                    <button type="submit" class="btn btn-success center-block">RESERVE</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
     <template id="template-reservation">
         <div id="post" class="form-row border text-center">
             <p id="name" class="col-md-3"></p>
@@ -85,23 +28,79 @@
             </div>
         </div>
     </template>
-
-    <div class="bg-dark text-center form-row">
-        <br>
-        <label for="template-reservation" class="text-white col-md-12 text-uppercase">Reservations book</label>
-        <br>
+    <template id="template-reservationsBookHeader">
+        <div id="tff">
+            <div class="bg-dark text-center form-row">
+                <br>
+                <label for="template-reservation" class="text-white col-md-12 text-uppercase">Reservations book</label>
+                <br>
+            </div>
+            <div class="form-row bg-dark border text-center text-white">
+                <p class="col-md-3">Full name</p>
+                <p class="col-md-3">Telephone number</p>
+                <p class="col-md-2">Accommodation type</p>
+                <p class="col-md-2">Comfort type</p>
+            </div>
+        </div>
+    </template>
+    <div class="header">
+        <nav class="navbar form-row navbar-expand-lg navbar-dark bg-dark text-center">
+            <a class="navbar-brand" href="index.html">Hotel Paradise</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showReservationBook()">ReservationBook</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Apartments</a>
+                    </li>
+                </ul>
+        </nav>
     </div>
-    <div class="form-row bg-dark border text-center text-white">
-        <p class="col-md-3">Full name</p>
-        <p class="col-md-3">Telephone number</p>
-        <p class="col-md-2">Accommodation type</p>
-        <p class="col-md-2">Comfort type</p>
+    <div id="content">
+        <div class="form-row">
+            <form class="form-group border col-md-12" id="addNewReservation">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="clientName">Full Name</label>
+                        <input type="text" class="required field form-control" id="clientName" placeholder="Enter name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="clientPhone">Phone number</label>
+                        <input type="text" class="phoneNumber form-control" id="clientPhone"
+                               placeholder="(xxx) xxx-xx-xx">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="apartmentAccommodation">Accommodation type: </label>
+                        <select class="sel custom-select col-md-6" id="apartmentAccommodation">
+                            <option selected>Choose</option>
+                            <option value="SGL">SGL</option>
+                            <option value="DBL">DGL</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="apartmentComfortType">Comfort type: </label>
+                        <select class="required sel custom-select col-md-6" id="apartmentComfortType">
+                            <option>Choose</option>
+                            <option value="ECONOM">ECONOM</option>
+                            <option value="STANDART">STANDART</option>
+                            <option value="LUX">LUX</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row text-center">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-success center-block">RESERVE</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-
     <div id="reservations">
 
     </div>
-        </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

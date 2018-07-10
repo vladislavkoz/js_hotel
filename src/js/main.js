@@ -2,14 +2,11 @@ window.onload = init;
 var reservationsUrl = 'http://localhost:3000/reservations';
 
 function init() {
-    loadReservations().then(renderReservations);
     let reservationForm = document.getElementById("addNewReservation");
     reservationForm.addEventListener('submit', (event) => {
         event.preventDefault();
         if (validation()){
             AddNewReservation()
-                .then(loadReservations)
-                .then(renderReservations);
             removeAllValidation();
             resetReservationForm();
         }
@@ -25,6 +22,7 @@ function renderReservations(reservations){
     let templateContent = reservationElement.content.getElementById('post');
     let reservationsList = document.getElementById('reservations');
     reservationsList.innerHTML = '';
+    addHeaderInReservationBook();
     for (let res of reservations) {
         let reservationClone = templateContent.cloneNode(true);
         updateReservationElement(reservationClone, res);
@@ -74,5 +72,20 @@ function editReservation(element) {
 }
 
 function showReservationBook(){
+    cleanPage();
+    loadReservations().then(renderReservations);
+}
+
+function cleanPage() {
+
+    let content = document.getElementById('content');
+    content.innerHTML = '';
+}
+
+function addHeaderInReservationBook() {
+    let reservations = document.getElementById('reservations');
+    let headerElement = document.getElementById('template-reservationsBookHeader');
+    let reservationHeaderClone = headerElement.content.getElementById('tff').cloneNode(true);
+    reservations.appendChild(reservationHeaderClone);
 
 }
