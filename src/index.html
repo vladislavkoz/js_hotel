@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="UTF-8">
 <html class="no-js" lang="en">
 <head>
     <title>Bootstrap 4 Layout</title>
@@ -13,53 +14,94 @@
 <body>
 <div class="container" id="container">
     <template id="template-reservation">
-        <div id="post" class="form-row border text-center">
-            <p id="name" class="col-md-3"></p>
-            <p id="telephone" class="col-md-3"></p>
-            <p id="accommodation" class="col-md-2"></p>
-            <p id="comfortType" class="col-md-2"></p>
-            <div class="col-md-2 row">
-                <button type="button" class="btn btn-outline-primary col-md-6"
-                        onclick="editReservation(this.parentNode.parentElement)">Edit
-                </button>
-                <button type="button" class="btn btn-outline-danger col-md-6"
-                        onclick="removeReservation(this.parentNode.parentElement)">Delete
-                </button>
+        <div class="card col-md-4" id="post">
+            <div class="card-body row">
+                <div class="list-group col-md-12  flex-row">
+                    <label class="mr-2" for="name">Client Name:</label>
+                    <p id="name"></p>
+                </div>
+                <div class="flex-row  col-md-12 list-group">
+                    <label class="mr-2" for="telephone">Telephone:</label>
+                    <p id="telephone"></p>
+                </div>
+                <div class="flex-row  col-md-12 list-group">
+                    <label class="mr-2" for="accommodation">Accommodation:</label>
+                    <p id="accommodation"></p>
+                </div>
+                <div class="flex-row  col-md-12 list-group">
+                    <label class="mr-2" for="comfort">Comfort:</label>
+                    <p id="comfort"></p>
+                </div>
+                <div class="flex-row  col-md-12 list-group">
+                    <label class="mr-2" for="checkIn">Check-in date:</label>
+                    <p id="checkIn"></p>
+                </div>
+                <div class="flex-row  col-md-12 list-group">
+                    <label class="mr-2" for="checkIn">Check-out date:</label>
+                    <p id="checkOut"></p>
+                </div>
+                <div class="flex-row">
+                    <p>
+                        <button type="button" onclick="changeUpdatingReservationForm(this.parentNode.parentElement.parentElement.parentElement)" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter" >
+                            Edit
+                        </button>
+                        <button type="button" class="btn btn-outline-danger"
+                                onclick="removeReservation(this.parentNode.parentElement.parentElement.parentElement)">
+                            Delete
+                        </button>
+                    </p>
+                </div>
             </div>
         </div>
     </template>
-    <template id="template-reservationsBookHeader">
-        <div id="tff">
-            <div class="bg-dark text-center form-row">
-                <br>
-                <label for="template-reservation" class="text-white col-md-12 text-uppercase">Reservations book</label>
-                <br>
-            </div>
-            <div class="form-row bg-dark border text-center text-white">
-                <p class="col-md-3">Full name</p>
-                <p class="col-md-3">Telephone number</p>
-                <p class="col-md-2">Accommodation type</p>
-                <p class="col-md-2">Comfort type</p>
+    <template id="template-apartment">
+        <div class="card col-md-4" id="apartmentCard">
+            <div class="card-body ">
+                <h5 class="card-title" id="id"></h5>
+                <div class="list-group col-md-12 flex-row">
+                    <p class="card-text mr-2">Accommodation:</p>
+                    <p class="card-text" id="accommodationType"></p>
+                </div>
+                <div class="list-group col-md-12 flex-row">
+                    <p class="card-text mr-2">Comfort:</p>
+                    <p class="card-text" id="comfortType"></p>
+                </div>
+                <button class="btn btn-success">Reserve</button>
             </div>
         </div>
     </template>
-    <div class="header">
+    <div class="header bg-dark col-md-12">
         <nav class="navbar form-row navbar-expand-lg navbar-dark bg-dark text-center">
             <a class="navbar-brand" href="index.html">Hotel Paradise</a>
-            <div class="collapse navbar-collapse">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerContent"
+                    aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="showReservationBook()">ReservationBook</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Apartments</a>
+                        <a class="nav-link" href="#" onclick="showApartments()">Apartments</a>
                     </li>
                 </ul>
+            </div>
         </nav>
     </div>
-    <div id="content">
-        <div class="form-row">
-            <form class="form-group border col-md-12" id="addNewReservation">
+
+    <div class="col-md-12  pt-0" id="apartments">
+        <div class="row border" id="apartmentsList">
+        </div>
+    </div>
+    <div class="col-md-12" id="reservations">
+        <div class="row" id="reservationsList">
+        </div>
+    </div>
+
+    <div id="reservationForm" class="border p-3">
+        <div class="form-row m--1">
+            <form class="form-group  col-md-12" id="addNewReservation">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="clientName">Full Name</label>
@@ -90,6 +132,16 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="checkInDate">Check-in date:</label>
+                        <input type="date" id="checkInDate">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="checkOutDate">Check-out date:</label>
+                        <input type="date" id="checkOutDate">
+                    </div>
+                </div>
                 <div class="form-row text-center">
                     <div class="col-12">
                         <button type="submit" class="btn btn-success center-block">RESERVE</button>
@@ -98,8 +150,74 @@
             </form>
         </div>
     </div>
-    <div id="reservations">
-
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="reservationUpdatingForm" class="border p-3">
+                        <p hidden id="updatingElementId"></p>
+                        <div class="form-row m--1">
+                            <form class="form-group  col-md-12" id="updateReservation">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="clientName">Full Name</label>
+                                        <input type="text" class="required field form-control" id="clName" placeholder="Enter name">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="clientPhone">Phone number</label>
+                                        <input type="text" class="phoneNumber form-control" id="clPhone"
+                                               placeholder="(xxx) xxx-xx-xx">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="apartmentAccommodation">Accommodation type: </label>
+                                        <select class="sel custom-select col-md-6" id="apAccommodation">
+                                            <option selected>Choose</option>
+                                            <option id="SGL" value="SGL">SGL</option>
+                                            <option id="DBL" value="DBL">DGL</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="apartmentComfortType">Comfort type: </label><br>
+                                        <select class="required sel custom-select col-md-6" id="apComfortType">
+                                            <option>Choose</option>
+                                            <option value="ECONOM">ECONOM</option>
+                                            <option value="STANDART">STANDART</option>
+                                            <option value="LUX">LUX</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-3 mr-4">
+                                        <label for="checkInDate">Check-in date:</label>
+                                        <input type="date" id="inDate">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="checkOutDate">Check-out date:</label>
+                                        <input type="date" id="outDate">
+                                    </div>
+                                </div>
+                                <div class="form-row text-center">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-success center-block" onclick="updateReservation()">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
