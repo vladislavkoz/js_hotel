@@ -1,31 +1,13 @@
 {
   "reservations": [
     {
-      "clientName": "fg",
-      "clientTelephone": "0685954166",
-      "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "STANDART",
-      "id": 2,
-      "checkInDate": "",
-      "checkOutDate": ""
-    },
-    {
-      "clientName": "fg",
-      "clientTelephone": "0685954166",
-      "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "LUX",
-      "id": 3,
-      "checkInDate": "",
-      "checkOutDate": ""
-    },
-    {
-      "clientName": "jhgjh",
+      "clientName": "VladislavSokolo",
       "clientTelephone": "0685459166",
       "apartmentAccommodation": "DBL",
       "apartmentComfortType": "LUX",
       "id": 4,
-      "checkInDate": "",
-      "checkOutDate": ""
+      "checkInDate": "2018-07-17",
+      "checkOutDate": "2018-07-20"
     },
     {
       "clientName": "jhgjh",
@@ -35,6 +17,51 @@
       "checkInDate": "2018-07-11",
       "checkOutDate": "2018-07-13",
       "id": 10
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "ECONOM",
+      "checkInDate": "",
+      "checkOutDate": "",
+      "id": 11
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "ECONOM",
+      "checkInDate": "2018-07-17",
+      "checkOutDate": "2018-07-20",
+      "id": 12
+    },
+    {
+      "clientName": "joe",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "STANDART",
+      "checkInDate": "2018-07-13",
+      "checkOutDate": "2018-07-14",
+      "id": 13
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "LUX",
+      "checkInDate": "2018-07-17",
+      "checkOutDate": "2018-07-18",
+      "id": 14
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "LUX",
+      "checkInDate": "2018-07-17",
+      "checkOutDate": "2018-07-20",
+      "id": 15
     }
   ],
   "apartments": [

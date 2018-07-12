@@ -12,64 +12,121 @@
     <script src="validator.min.js"></script>
 </head>
 <body>
+<template id="template-reservation">
+    <div class="card col-md-4" id="post">
+        <div class="card-body row">
+            <div class="list-group col-md-12  flex-row">
+                <label class="mr-2" for="name">Client Name:</label>
+                <p id="name"></p>
+            </div>
+            <div class="flex-row  col-md-12 list-group">
+                <label class="mr-2" for="telephone">Telephone:</label>
+                <p id="telephone"></p>
+            </div>
+            <div class="flex-row  col-md-12 list-group">
+                <label class="mr-2" for="accommodation">Accommodation:</label>
+                <p id="accommodation"></p>
+            </div>
+            <div class="flex-row  col-md-12 list-group">
+                <label class="mr-2" for="comfort">Comfort:</label>
+                <p id="comfort"></p>
+            </div>
+            <div class="flex-row  col-md-12 list-group">
+                <label class="mr-2" for="checkIn">Check-in date:</label>
+                <p id="checkIn"></p>
+            </div>
+            <div class="flex-row  col-md-12 list-group">
+                <label class="mr-2" for="checkIn">Check-out date:</label>
+                <p id="checkOut"></p>
+            </div>
+            <div class="flex-row">
+                <p>
+                    <button type="button"
+                            onclick="fillDataInReservationForm(this.parentNode.parentElement.parentElement.parentElement)"
+                            class="btn btn-outline-primary">
+                        Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger"
+                            onclick="removeReservation(this.parentNode.parentElement.parentElement.parentElement)">
+                        Delete
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+</template>
+<template id="template-apartment">
+    <div class="card col-md-4" id="apartmentCard">
+        <div class="card-body ">
+            <h5 class="card-title" id="id"></h5>
+            <div class="list-group col-md-12 flex-row">
+                <p class="card-text mr-2">Accommodation:</p>
+                <p class="card-text" id="accommodationType"></p>
+            </div>
+            <div class="list-group col-md-12 flex-row">
+                <p class="card-text mr-2">Comfort:</p>
+                <p class="card-text" id="comfortType"></p>
+            </div>
+            <button class="btn btn-success" id="apartmentReservationButton" onclick="addReservationsFromCurrentApartment(this.parentNode)">Reserve</button>
+        </div>
+    </div>
+</template>
+<template  id="template-reservationForm">
+    <div id="reservationForm" class="border p-3">
+        <p hidden id="reservationId"></p>
+        <div class="form-row m--1">
+            <form class="form-group  col-md-12" id="addNewReservation">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="clientName">Full Name</label>
+                        <input type="text" class="required field form-control" id="clientName"
+                               placeholder="Enter name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="clientPhone">Phone number</label>
+                        <input type="text" class="phoneNumber form-control" id="clientPhone"
+                               placeholder="(xxx) xxx-xx-xx">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="mr-2" for="apartmentAccommodation">Accommodation type: </label>
+                        <select class="sel custom-select col-md-6" id="apartmentAccommodation">
+                            <option selected>Choose</option>
+                            <option value="SGL">SGL</option>
+                            <option value="DBL">DGL</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="mr-2" for="apartmentComfortType">Comfort type: </label>
+                        <select class="required sel custom-select col-md-6" id="apartmentComfortType">
+                            <option>Choose</option>
+                            <option value="ECONOM">ECONOM</option>
+                            <option value="STANDART">STANDART</option>
+                            <option value="LUX">LUX</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3 mr-5">
+                        <label for="checkInDate">Check-in date:</label>
+                        <input type="date" id="checkInDate">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="checkOutDate">Check-out date:</label>
+                        <input type="date" id="checkOutDate">
+                    </div>
+                </div>
+                <div class="form-row text-center">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-success center-block" id="reservationButton">RESERVE</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
 <div class="container" id="container">
-    <template id="template-reservation">
-        <div class="card col-md-4" id="post">
-            <div class="card-body row">
-                <div class="list-group col-md-12  flex-row">
-                    <label class="mr-2" for="name">Client Name:</label>
-                    <p id="name"></p>
-                </div>
-                <div class="flex-row  col-md-12 list-group">
-                    <label class="mr-2" for="telephone">Telephone:</label>
-                    <p id="telephone"></p>
-                </div>
-                <div class="flex-row  col-md-12 list-group">
-                    <label class="mr-2" for="accommodation">Accommodation:</label>
-                    <p id="accommodation"></p>
-                </div>
-                <div class="flex-row  col-md-12 list-group">
-                    <label class="mr-2" for="comfort">Comfort:</label>
-                    <p id="comfort"></p>
-                </div>
-                <div class="flex-row  col-md-12 list-group">
-                    <label class="mr-2" for="checkIn">Check-in date:</label>
-                    <p id="checkIn"></p>
-                </div>
-                <div class="flex-row  col-md-12 list-group">
-                    <label class="mr-2" for="checkIn">Check-out date:</label>
-                    <p id="checkOut"></p>
-                </div>
-                <div class="flex-row">
-                    <p>
-                        <button type="button" onclick="changeUpdatingReservationForm(this.parentNode.parentElement.parentElement.parentElement)" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter" >
-                            Edit
-                        </button>
-                        <button type="button" class="btn btn-outline-danger"
-                                onclick="removeReservation(this.parentNode.parentElement.parentElement.parentElement)">
-                            Delete
-                        </button>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </template>
-    <template id="template-apartment">
-        <div class="card col-md-4" id="apartmentCard">
-            <div class="card-body ">
-                <h5 class="card-title" id="id"></h5>
-                <div class="list-group col-md-12 flex-row">
-                    <p class="card-text mr-2">Accommodation:</p>
-                    <p class="card-text" id="accommodationType"></p>
-                </div>
-                <div class="list-group col-md-12 flex-row">
-                    <p class="card-text mr-2">Comfort:</p>
-                    <p class="card-text" id="comfortType"></p>
-                </div>
-                <button class="btn btn-success">Reserve</button>
-            </div>
-        </div>
-    </template>
     <div class="header bg-dark col-md-12">
         <nav class="navbar form-row navbar-expand-lg navbar-dark bg-dark text-center">
             <a class="navbar-brand" href="index.html">Hotel Paradise</a>
@@ -98,123 +155,17 @@
         <div class="row" id="reservationsList">
         </div>
     </div>
-
-    <div id="reservationForm" class="border p-3">
-        <div class="form-row m--1">
-            <form class="form-group  col-md-12" id="addNewReservation">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="clientName">Full Name</label>
-                        <input type="text" class="required field form-control" id="clientName" placeholder="Enter name">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="clientPhone">Phone number</label>
-                        <input type="text" class="phoneNumber form-control" id="clientPhone"
-                               placeholder="(xxx) xxx-xx-xx">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="apartmentAccommodation">Accommodation type: </label>
-                        <select class="sel custom-select col-md-6" id="apartmentAccommodation">
-                            <option selected>Choose</option>
-                            <option value="SGL">SGL</option>
-                            <option value="DBL">DGL</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="apartmentComfortType">Comfort type: </label>
-                        <select class="required sel custom-select col-md-6" id="apartmentComfortType">
-                            <option>Choose</option>
-                            <option value="ECONOM">ECONOM</option>
-                            <option value="STANDART">STANDART</option>
-                            <option value="LUX">LUX</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="checkInDate">Check-in date:</label>
-                        <input type="date" id="checkInDate">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="checkOutDate">Check-out date:</label>
-                        <input type="date" id="checkOutDate">
-                    </div>
-                </div>
-                <div class="form-row text-center">
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-success center-block">RESERVE</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div id="reservationUpdatingForm" class="border p-3">
-                        <p hidden id="updatingElementId"></p>
-                        <div class="form-row m--1">
-                            <form class="form-group  col-md-12" id="updateReservation">
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="clientName">Full Name</label>
-                                        <input type="text" class="required field form-control" id="clName" placeholder="Enter name">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="clientPhone">Phone number</label>
-                                        <input type="text" class="phoneNumber form-control" id="clPhone"
-                                               placeholder="(xxx) xxx-xx-xx">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="apartmentAccommodation">Accommodation type: </label>
-                                        <select class="sel custom-select col-md-6" id="apAccommodation">
-                                            <option selected>Choose</option>
-                                            <option id="SGL" value="SGL">SGL</option>
-                                            <option id="DBL" value="DBL">DGL</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="apartmentComfortType">Comfort type: </label><br>
-                                        <select class="required sel custom-select col-md-6" id="apComfortType">
-                                            <option>Choose</option>
-                                            <option value="ECONOM">ECONOM</option>
-                                            <option value="STANDART">STANDART</option>
-                                            <option value="LUX">LUX</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-3 mr-4">
-                                        <label for="checkInDate">Check-in date:</label>
-                                        <input type="date" id="inDate">
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="checkOutDate">Check-out date:</label>
-                                        <input type="date" id="outDate">
-                                    </div>
-                                </div>
-                                <div class="form-row text-center">
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-success center-block" onclick="updateReservation()">Update</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="modal-body" id="modalBody">
+
                 </div>
             </div>
         </div>

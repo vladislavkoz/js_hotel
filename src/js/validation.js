@@ -59,7 +59,7 @@ function checkTextField(field){
     if (!field.value){
         return false;
     }
-    return (/^[a-zA-Z1-9]+$/.test(field.value));
+    return (/^[a-zA-Z-\s]+$/.test(field.value));
 }
 
 function setPositiveValidation(entity){

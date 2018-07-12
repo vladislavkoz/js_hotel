@@ -3,15 +3,27 @@ var reservationsUrl = 'http://localhost:3000/reservations';
 var apartmentsUrl = 'http://localhost:3000/apartments';
 
 function init() {
+    showStartPage();
     let reservationForm = document.getElementById("addNewReservation");
     reservationForm.addEventListener('submit', (event) => {
         event.preventDefault();
         if (validation()){
-            AddNewReservation();
+            addNewReservation();
             removeAllValidation();
             resetReservationForm();
         }
     })
+}
+
+function showStartPage(){
+    document.getElementById('container').appendChild(getReservationForm());
+}
+
+function getReservationForm(){
+    let template = document.getElementById('template-reservationForm');
+    let reservationForm = template.content.getElementById('reservationForm');
+    let reservationFormClone = reservationForm.cloneNode(true);
+    return reservationFormClone;
 }
 
 function loadReservations(){
@@ -31,7 +43,7 @@ function renderReservations(reservations){
     }
 }
 
-function AddNewReservation(){
+function addNewReservation(){
     let clName = document.getElementById("clientName").value;
     let clPhone = document.getElementById("clientPhone").value;
     let apAccommodation = document.getElementById("apartmentAccommodation").value;
@@ -53,6 +65,11 @@ function AddNewReservation(){
             'Content-Type': 'application/json'
         }
     });
+}
+
+function addReservationFormToModalWindow() {
+    document.getElementById('modalBody').appendChild(getReservationForm());
+    document.getElementById('reservationButton').innerText = 'Confirm';
 }
 
 function resetReservationForm() {
@@ -80,17 +97,33 @@ function removeReservation(element){
 
 function showReservationBook(){
     cleanPage();
+    addReservationFormToModalWindow();
+    addUpdatingEventListener()
     loadReservations().then(renderReservations);
+}
+
+function addUpdatingEventListener() {
+    document.getElementById('reservationButton').addEventListener('click', (event) => {
+        event.preventDefault();
+        if (validation()){
+            updateReservation();
+        }
+    })
 }
 
 function cleanPage() {
     cleanReservationPage();
     cleanReservationsBookPage();
     cleanApartmentsPage();
+    removeReservationFormFromModalWindow();
+}
+
+function removeReservationFormFromModalWindow() {
+    document.getElementById('modalBody').innerHTML = '';
 }
 
 function cleanReservationPage() {
-    let reservationPage = document.getElementById('reservationForm');
+    let reservationPage = document.getElementById('container').querySelector('#reservationForm');
     clean(reservationPage);
 }
 
@@ -112,7 +145,31 @@ function clean(page) {
 
 function showApartments(){
     cleanPage();
+    addReservationFormToModalWindow();
     loadApartments().then(renderApartments);
+}
+
+function addReservationsFromCurrentApartment(element) {
+    fillApartmentsDataInReservationForm(element);
+    openModalWindow();
+    setConfirmReservationEventListener();
+}
+function  setConfirmReservationEventListener(){
+    document.getElementById('reservationButton').addEventListener('click', (event) => {
+        event.preventDefault();
+        if (validation()){
+            addNewReservation()
+                .then(closeModalWindow);
+        }
+    })
+}
+
+function fillApartmentsDataInReservationForm(apartment) {
+    let accommodationType = apartment.querySelector('#accommodationType').innerHTML;
+    let comfortType = apartment.querySelector('#comfortType').innerHTML;
+    let updatingForm = document.getElementById('reservationForm');
+    updatingForm.querySelector('#apartmentAccommodation').value = accommodationType;
+    updatingForm.querySelector('#apartmentComfortType').value = comfortType;
 }
 
 function loadApartments(){
@@ -134,38 +191,49 @@ function updateApartmentElement(apartmentElement,aps){
     apartmentElement.querySelector('#id').innerText = aps.id;
     apartmentElement.querySelector('#accommodationType').innerText = aps.accommodationType;
     apartmentElement.querySelector('#comfortType').innerText = aps.comfortType;
-
 }
 
-function changeUpdatingReservationForm(element) {
-    let updatingForm = document.getElementById('reservationUpdatingForm');
+function fillDataInReservationForm(element) {
+    openModalWindow();
+    let updatingForm = document.getElementById('reservationForm');
     let name = element.querySelector('#name');
     let telephone = element.querySelector('#telephone');
     let accommodation = element.querySelector('#accommodation');
     let comfort = element.querySelector('#comfort');
     let checkIn = element.querySelector('#checkIn');
     let checkOut = element.querySelector('#checkOut');
-    let id = element.id;
-    updatingForm.querySelector('#clName').value = name.innerHTML;
-    updatingForm.querySelector('#clPhone').value = telephone.innerHTML;
-    updatingForm.querySelector('#apAccommodation').value = accommodation.innerHTML;
-    updatingForm.querySelector('#apComfortType').value = comfort.innerHTML;
-    updatingForm.querySelector('#inDate').value = checkIn.innerHTML;
-    updatingForm.querySelector('#outDate').value = checkOut.innerHTML;
-    updatingForm.querySelector('#updatingElementId').innerHTML = id;
+    updatingForm.querySelector('#clientName').value = name.innerHTML;
+    updatingForm.querySelector('#clientPhone').value = telephone.innerHTML;
+    updatingForm.querySelector('#apartmentAccommodation').value = accommodation.innerHTML;
+    updatingForm.querySelector('#apartmentComfortType').value = comfort.innerHTML;
+    updatingForm.querySelector('#checkInDate').value = checkIn.innerHTML;
+    updatingForm.querySelector('#checkOutDate').value = checkOut.innerHTML;
+    updatingForm.querySelector('#reservationId').innerHTML = element.id;
 }
 
 function updateReservation() {
-   let updatingForm = document.getElementById('reservationUpdatingForm');
-    fetch(reservationsUrl + '/' + updatingForm.querySelector('#updatingElementId').innerHTML,{
+   let updatingForm = document.getElementById('reservationForm');
+    fetch(reservationsUrl + '/' + updatingForm.querySelector('#reservationId').innerHTML,{
         method: 'PATCH',
         body: JSON.stringify({
-            clientName: updatingForm.querySelector('#clName').value,
-            clientTelephone: updatingForm.querySelector('#clPhone').value,
-            apartmentAccommodation: updatingForm.querySelector('#apAccommodation').value,
-            apartmentComfortType: updatingForm.querySelector('#apComfortType').value,
-            checkInDate: updatingForm.querySelector('#inDate').value,
-            checkOutDate: updatingForm.querySelector('#outDate').value
-        })
-    });
+            clientName: updatingForm.querySelector('#clientName').value,
+            clientTelephone: updatingForm.querySelector('#clientPhone').value,
+            apartmentAccommodation: updatingForm.querySelector('#apartmentAccommodation').value,
+            apartmentComfortType: updatingForm.querySelector('#apartmentComfortType').value,
+            checkInDate: updatingForm.querySelector('#checkInDate').value,
+            checkOutDate: updatingForm.querySelector('#checkOutDate').value
+        }),
+        headers:{
+            'Accept': 'application/json, text/plain,*/*',
+            'Content-Type': 'application/json'
+        }
+    }).then(loadReservations).then(renderReservations);
+    closeModalWindow()
+}
+
+function closeModalWindow() {
+    $('#exampleModalCenter').modal('hide');
+}
+function openModalWindow() {
+    $('#exampleModalCenter').modal('show');
 }
