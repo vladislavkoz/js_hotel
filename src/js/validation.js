@@ -2,17 +2,44 @@ var fields;
 var phoneNumber;
 var selects;
 function validation() {
-     form = document.getElementById("addNewReservation");
-     fields = form.querySelectorAll('.field');
-     phoneNumber = form.querySelector('.phoneNumber');
-     selects = form.querySelectorAll('.sel');
+     let form = document.getElementById("addNewReservation");
+     let fields = form.querySelectorAll('.field');
+     let phoneNumber = form.querySelector('.phoneNumber');
+     let selects = form.querySelectorAll('.sel');
+     let startdate = form.querySelector('#checkInDate');
+     let endDate = form.querySelector('#checkOutDate');
+
     if (!validateTextFields(fields)){
         return false;
     }
     if(!validatePhoneNumber(phoneNumber)){
         return false;
     }
-    return validateSelects(selects);
+    if (!validateSelects(selects)){
+        return false;
+    }
+    return (validateDates(startdate, endDate));
+}
+
+function cleanDatesValidation(startDate, endDate) {
+
+}
+
+function validateDates(startdate, endDate){
+    if (startdate.value == ""){
+        return false;
+    }
+    if (endDate.value == ""){
+        return false;
+    }
+    let today = new Date();
+    if (startdate > endDate){
+        return false;
+    }
+    if (startdate < today){
+        return false;
+    }
+    return true;
 }
 
 function validatePhoneNumber(number) {
@@ -76,7 +103,7 @@ function validateSelects(selects){
         if (checkSelect(selects[i])){
             setPositiveValidation(selects[i])
         } else{
-            setNagativeValidation(selects[i])
+            setNagativeValidation(selects[i]);
             return false;
         }
     }

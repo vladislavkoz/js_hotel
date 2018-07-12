@@ -62,6 +62,78 @@
       "checkInDate": "2018-07-17",
       "checkOutDate": "2018-07-20",
       "id": 15
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "STANDART",
+      "checkInDate": "",
+      "checkOutDate": "",
+      "id": 16
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "ECONOM",
+      "checkInDate": "",
+      "checkOutDate": "",
+      "id": 17
+    },
+    {
+      "clientName": "Vladislav Sokolov",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "ECONOM",
+      "checkInDate": "",
+      "checkOutDate": "",
+      "id": 18
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "STANDART",
+      "checkInDate": "",
+      "checkOutDate": "",
+      "id": 19
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "STANDART",
+      "checkInDate": "",
+      "checkOutDate": "",
+      "id": 20
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "ECONOM",
+      "checkInDate": "",
+      "checkOutDate": "",
+      "id": 21
+    },
+    {
+      "clientName": "jhgjh",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "ECONOM",
+      "checkInDate": "2018-07-18",
+      "checkOutDate": "2018-07-19",
+      "id": 22
+    },
+    {
+      "clientName": "Vladislav Sokolov",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "STANDART",
+      "checkInDate": "2018-07-18",
+      "checkOutDate": "2018-07-20",
+      "id": 23
     }
   ],
   "apartments": [
