@@ -14,8 +14,8 @@
 <body>
 <template id="template-reservation">
     <div class="card col-md-4" id="reservationCard">
-        <div class="card-body row">
-            <div class="list-group col-md-12  flex-row">
+        <div class="card-body col pl-4">
+            <div class="list-group col-md-12 flex-row">
                 <label class="mr-2" for="name">Client Name:</label>
                 <p id="name"></p>
             </div>
@@ -40,25 +40,24 @@
                 <p id="checkOut"></p>
             </div>
             <div class="flex-row">
-                <p>
-                    <button type="button"
-                            onclick="fillDataInReservationForm(this.parentNode.parentElement.parentElement.parentElement)"
-                            class="btn btn-outline-primary">
-                        Edit
-                    </button>
-                    <button type="button" class="btn btn-outline-danger"
-                            onclick="removeReservation(this.parentNode.parentElement.parentElement.parentElement)">
-                        Delete
-                    </button>
-                </p>
+                <button type="button"
+                        onclick="fillDataInReservationForm(this.parentNode.parentElement.parentElement)"
+                        class="btn btn-outline-primary">
+                    Edit
+                </button>
+                <button type="button" class="btn btn-outline-danger"
+                        onclick="removeReservation(this.parentNode.parentElement.parentElement)">
+                    Delete
+                </button>
             </div>
         </div>
     </div>
 </template>
 <template id="template-apartment">
     <div class="card col-md-4" id="apartmentCard">
-        <div class="card-body ">
-            <h5 class="card-title" id="id"></h5>
+        <div class="card-body">
+            <p id="id"></p>
+            <h5 class="card-title"></h5>
             <div class="list-group col-md-12 flex-row">
                 <p class="card-text mr-2">Accommodation:</p>
                 <p class="card-text" id="accommodationType"></p>
@@ -67,15 +66,19 @@
                 <p class="card-text mr-2">Comfort:</p>
                 <p class="card-text" id="comfortType"></p>
             </div>
-            <button class="btn btn-success" id="apartmentReservationButton" onclick="addReservationsFromCurrentApartment(this.parentNode)">Reserve</button>
+            <div class="text-center">
+                <button class="btn btn-outline-success" id="apartmentReservationButton"
+                        onclick="addReservationsFromCurrentApartment(this.parentNode.parentElement)">Reserve
+                </button>
+            </div>
         </div>
     </div>
 </template>
-<template  id="template-reservationForm">
-    <div id="reservationForm" class="border p-3">
+<template id="template-reservationForm">
+    <div id="reservationForm" class="border p-4">
         <p hidden id="reservationId"></p>
         <div class="form-row m--1">
-            <form class="form-group  col-md-12" id="addNewReservation">
+            <form class="form-group col-md-12 pl-3" id="addNewReservation">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="clientName">Full Name</label>
@@ -121,7 +124,8 @@
                 </div>
                 <div class="form-row text-center">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-success center-block" id="reservationButton">RESERVE</button>
+                        <button type="submit" class="btn btn-success center-block" id="reservationButton">RESERVE
+                        </button>
                     </div>
                 </div>
             </form>
@@ -150,7 +154,7 @@
     </div>
     <br>
     <div class="col-md-12  pt-0" id="apartments">
-        <div class="row border" id="apartmentsList">
+        <div class="row" id="apartmentsList">
         </div>
     </div>
     <div class="col-md-12" id="reservations">

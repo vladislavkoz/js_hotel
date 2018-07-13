@@ -1,15 +1,6 @@
 {
   "reservations": [
     {
-      "clientName": "Anton Zaharov",
-      "clientTelephone": "0685954166",
-      "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "LUX",
-      "checkInDate": "2018-07-17",
-      "checkOutDate": "2018-07-18",
-      "id": 14
-    },
-    {
       "clientName": "Vladislav Sokolov",
       "clientTelephone": "0685954166",
       "apartmentAccommodation": "DGL",
@@ -62,6 +53,15 @@
       "checkInDate": "2018-07-14",
       "checkOutDate": "2018-07-24",
       "id": 39
+    },
+    {
+      "clientName": "Vladislav Sokolov",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "SGL",
+      "apartmentComfortType": "LUX",
+      "checkInDate": "2018-07-13",
+      "checkOutDate": "2018-07-17",
+      "id": 40
     }
   ],
   "apartments": [

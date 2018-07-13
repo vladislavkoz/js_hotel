@@ -1,6 +1,6 @@
 window.onload = init;
-var reservationsUrl = 'http://localhost:3000/reservations';
-var apartmentsUrl = 'http://localhost:3000/apartments';
+let reservationsUrl = 'http://localhost:3000/reservations';
+let apartmentsUrl = 'http://localhost:3000/apartments';
 
 function init() {
     showStartPage();
@@ -16,7 +16,6 @@ function init() {
 
 function showStartPage(){
     document.getElementById('startPage').appendChild(getReservationForm());
-
 }
 
 function getReservationForm(){
@@ -73,7 +72,7 @@ function addReservationFormToModalWindow() {
 }
 
 function resetReservationForm() {
-    var reservationForm = document.getElementById("addNewReservation");
+    let reservationForm = document.getElementById("addNewReservation");
     reservationForm.reset();
 }
 
@@ -88,6 +87,7 @@ function updateReservationElement(element, res) {
 }
 
 function removeReservation(element){
+    alert(element.classList);
     fetch(reservationsUrl + '/' + element.id,{
         method: 'delete'
     })
@@ -98,7 +98,7 @@ function removeReservation(element){
 function showReservationBook(){
     cleanPage();
     addReservationFormToModalWindow();
-    addUpdatingEventListener()
+    addUpdatingEventListener();
     loadReservations().then(renderReservations);
 }
 
@@ -154,7 +154,8 @@ function addReservationsFromCurrentApartment(element) {
     openModalWindow();
     setConfirmReservationEventListener();
 }
-function  setConfirmReservationEventListener(){
+
+function setConfirmReservationEventListener(){
     document.getElementById('reservationButton').addEventListener('click', (event) => {
         event.preventDefault();
         if (validation()){
@@ -177,8 +178,8 @@ function loadApartments(){
 }
 
 function renderApartments(apartments){
-    let apartmentElement = document.getElementById('template-apartment');
-    let templateContent = apartmentElement.content.getElementById('apartmentCard');
+    let apartmentTemaplate = document.getElementById('template-apartment');
+    let templateContent = apartmentTemaplate.content.getElementById('apartmentCard');
     let apartmentsList = document.getElementById('apartmentsList');
     for (let aps of apartments) {
         let apartmentClone = templateContent.cloneNode(true);
@@ -234,6 +235,7 @@ function updateReservation() {
 function closeModalWindow() {
     $('#exampleModalCenter').modal('hide');
 }
+
 function openModalWindow() {
     $('#exampleModalCenter').modal('show');
 }
