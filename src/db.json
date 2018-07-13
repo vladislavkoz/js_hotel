@@ -1,52 +1,7 @@
 {
   "reservations": [
     {
-      "clientName": "VladislavSokolo",
-      "clientTelephone": "0685459166",
-      "apartmentAccommodation": "DBL",
-      "apartmentComfortType": "LUX",
-      "id": 4,
-      "checkInDate": "2018-07-17",
-      "checkOutDate": "2018-07-20"
-    },
-    {
-      "clientName": "jhgjh",
-      "clientTelephone": "0685954166",
-      "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "ECONOM",
-      "checkInDate": "2018-07-11",
-      "checkOutDate": "2018-07-13",
-      "id": 10
-    },
-    {
-      "clientName": "jhgjh",
-      "clientTelephone": "0685954166",
-      "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "ECONOM",
-      "checkInDate": "",
-      "checkOutDate": "",
-      "id": 11
-    },
-    {
-      "clientName": "jhgjh",
-      "clientTelephone": "0685954166",
-      "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "ECONOM",
-      "checkInDate": "2018-07-17",
-      "checkOutDate": "2018-07-20",
-      "id": 12
-    },
-    {
-      "clientName": "joe",
-      "clientTelephone": "0685954166",
-      "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "STANDART",
-      "checkInDate": "2018-07-13",
-      "checkOutDate": "2018-07-14",
-      "id": 13
-    },
-    {
-      "clientName": "jhgjh",
+      "clientName": "Anton Zaharov",
       "clientTelephone": "0685954166",
       "apartmentAccommodation": "SGL",
       "apartmentComfortType": "LUX",
@@ -55,85 +10,58 @@
       "id": 14
     },
     {
-      "clientName": "jhgjh",
-      "clientTelephone": "0685954166",
-      "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "LUX",
-      "checkInDate": "2018-07-17",
-      "checkOutDate": "2018-07-20",
-      "id": 15
-    },
-    {
-      "clientName": "jhgjh",
-      "clientTelephone": "0685954166",
-      "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "STANDART",
-      "checkInDate": "",
-      "checkOutDate": "",
-      "id": 16
-    },
-    {
-      "clientName": "jhgjh",
-      "clientTelephone": "0685954166",
-      "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "ECONOM",
-      "checkInDate": "",
-      "checkOutDate": "",
-      "id": 17
-    },
-    {
       "clientName": "Vladislav Sokolov",
       "clientTelephone": "0685954166",
-      "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "ECONOM",
-      "checkInDate": "",
-      "checkOutDate": "",
-      "id": 18
+      "apartmentAccommodation": "DGL",
+      "apartmentComfortType": "STANDART",
+      "checkInDate": "2018-07-13",
+      "checkOutDate": "2018-07-14",
+      "id": 33
     },
     {
-      "clientName": "jhgjh",
+      "clientName": "John Abramovich",
       "clientTelephone": "0685954166",
       "apartmentAccommodation": "SGL",
       "apartmentComfortType": "STANDART",
-      "checkInDate": "",
-      "checkOutDate": "",
-      "id": 19
+      "checkInDate": "2018-07-13",
+      "checkOutDate": "2018-07-14",
+      "id": 34
     },
     {
-      "clientName": "jhgjh",
-      "clientTelephone": "0685954166",
+      "clientName": "Dima Bilan",
+      "clientTelephone": "0685459166",
       "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "STANDART",
-      "checkInDate": "",
-      "checkOutDate": "",
-      "id": 20
+      "apartmentComfortType": "ECONOM",
+      "checkInDate": "2018-07-15",
+      "checkOutDate": "2018-07-21",
+      "id": 36
     },
     {
-      "clientName": "jhgjh",
+      "clientName": "Joe Lohnson",
+      "clientTelephone": "0685954166",
+      "apartmentAccommodation": "DGL",
+      "apartmentComfortType": "ECONOM",
+      "checkInDate": "2018-07-13",
+      "checkOutDate": "2018-07-14",
+      "id": 37
+    },
+    {
+      "clientName": "Jane Foster",
       "clientTelephone": "0685954166",
       "apartmentAccommodation": "SGL",
       "apartmentComfortType": "ECONOM",
-      "checkInDate": "",
-      "checkOutDate": "",
-      "id": 21
+      "checkInDate": "2018-07-13",
+      "checkOutDate": "2018-07-14",
+      "id": 38
     },
     {
-      "clientName": "jhgjh",
-      "clientTelephone": "0685954166",
+      "clientName": "Edgar Gard",
+      "clientTelephone": "0685459166",
       "apartmentAccommodation": "SGL",
       "apartmentComfortType": "ECONOM",
-      "checkInDate": "2018-07-18",
-      "checkOutDate": "2018-07-19",
-      "id": 22
-    },
-    {
-      "clientName": "Vladislav Sokolov",
-      "clientTelephone": "0685954166",
-      "apartmentAccommodation": "SGL",
-      "apartmentComfortType": "STANDART",
-      "checkInDate": "2018-07-18",
-      "checkOutDate": "2018-07-20",
-      "id": 23
+      "checkInDate": "2018-07-14",
+      "checkOutDate": "2018-07-24",
+      "id": 39
     }
   ],
   "apartments": [
@@ -149,33 +77,23 @@
     },
     {
       "id": 3,
-      "accommodationType": "SGL",
+      "accommodationType": "DGL",
       "comfortType": "LUX"
     },
     {
       "id": 4,
-      "accommodationType": "DGL",
-      "comfortType": "STANDART"
+      "accommodationType": "SGL",
+      "comfortType": "ECONOM"
     },
     {
       "id": 5,
-      "accommodationType": "SGL",
-      "comfortType": "LUX"
-    },
-    {
-      "id": 6,
       "accommodationType": "DGL",
       "comfortType": "ECONOM"
     },
     {
-      "id": 7,
+      "id": 6,
       "accommodationType": "SGL",
       "comfortType": "STANDART"
-    },
-    {
-      "id": 8,
-      "accommodationType": "DGL",
-      "comfortType": "LUX"
     }
   ]
 }

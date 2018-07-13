@@ -9,14 +9,14 @@ function init() {
         event.preventDefault();
         if (validation()){
             addNewReservation();
-            removeAllValidation();
             resetReservationForm();
         }
     })
 }
 
 function showStartPage(){
-    document.getElementById('container').appendChild(getReservationForm());
+    document.getElementById('startPage').appendChild(getReservationForm());
+
 }
 
 function getReservationForm(){
@@ -32,7 +32,7 @@ function loadReservations(){
 
 function renderReservations(reservations){
     let reservationElement = document.getElementById('template-reservation');
-    let templateContent = reservationElement.content.getElementById('post');
+    let templateContent = reservationElement.content.getElementById('reservationCard');
     let reservationsDiv = document.getElementById('reservations');
     let reservationsList = reservationsDiv.querySelector('#reservationsList');
     reservationsList.innerHTML = '';
@@ -123,7 +123,7 @@ function removeReservationFormFromModalWindow() {
 }
 
 function cleanReservationPage() {
-    let reservationPage = document.getElementById('container').querySelector('#reservationForm');
+    let reservationPage = document.getElementById('container').querySelector('#startPage');
     clean(reservationPage);
 }
 

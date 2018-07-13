@@ -1,13 +1,16 @@
 var fields;
 var phoneNumber;
 var selects;
+var startDate;
+var endDate;
+
 function validation() {
      let form = document.getElementById("addNewReservation");
-     let fields = form.querySelectorAll('.field');
-     let phoneNumber = form.querySelector('.phoneNumber');
-     let selects = form.querySelectorAll('.sel');
-     let startdate = form.querySelector('#checkInDate');
-     let endDate = form.querySelector('#checkOutDate');
+      fields = form.querySelectorAll('.field');
+      phoneNumber = form.querySelector('.phoneNumber');
+      selects = form.querySelectorAll('.sel');
+      startDate = form.querySelector('#checkInDate');
+      endDate = form.querySelector('#checkOutDate');
 
     if (!validateTextFields(fields)){
         return false;
@@ -18,28 +21,51 @@ function validation() {
     if (!validateSelects(selects)){
         return false;
     }
-    return (validateDates(startdate, endDate));
+    if(!validateDates(startDate, endDate)){
+        return false;
+    }else {
+        cleanAllValidation();
+        return true;
+    }
 }
 
-function cleanDatesValidation(startDate, endDate) {
-
+function cleanDatesValidation(startDateFild, endDateFild) {
+    let dates = [startDateFild,endDateFild];
+    for (let i = 0; i < dates.length; i++) {
+        dates[i].classList.remove('is-valid');
+        dates[i].classList.remove('is-invalid');
+    }
 }
 
-function validateDates(startdate, endDate){
-    if (startdate.value == ""){
+function validateDates(startDate, endDate){
+    cleanDatesValidation(startDate,endDate);
+    if (startDate.value === ""){
+        setNagativeValidation(startDate);
         return false;
     }
-    if (endDate.value == ""){
+    let today = getTodayDate();
+    let checkInDate = new Date(startDate.value);
+    if (checkInDate < today){
+        setNagativeValidation(startDate);
         return false;
     }
-    let today = new Date();
-    if (startdate > endDate){
+    if (endDate.value === ""){
+        setNagativeValidation(endDate);
         return false;
     }
-    if (startdate < today){
+    let checkOutDate = new Date(endDate.value);
+    if (checkInDate > checkOutDate){
+        setNagativeValidation(startDate);
+        setNagativeValidation(endDate);
         return false;
     }
     return true;
+}
+
+function getTodayDate() {
+    let now = new Date();
+    let today = new Date(now.getFullYear(),now.getMonth(),now.getDate());
+    return today;
 }
 
 function validatePhoneNumber(number) {
@@ -70,15 +96,15 @@ function validateTextFields(fields){
     return true;
 }
 
-function cleanFieldValidation(entity) {
-    entity.classList.remove("is-valid");
-    entity.classList.remove("is-invalid");
+function cleanFieldValidation(field) {
+    field.classList.remove("is-valid");
+    field.classList.remove("is-invalid");
 }
 
-function cleanFieldsValidation(entity){
-    for (let i = 0; i < entity.length; i++) {
-        entity[i].classList.remove("is-valid");
-        entity[i].classList.remove("is-invalid");
+function cleanFieldsValidation(fields){
+    for (let i = 0; i < fields.length; i++) {
+        fields[i].classList.remove("is-valid");
+        fields[i].classList.remove("is-invalid");
     }
 }
 
@@ -89,12 +115,12 @@ function checkTextField(field){
     return (/^[a-zA-Z-\s]+$/.test(field.value));
 }
 
-function setPositiveValidation(entity){
-    entity.classList.add("is-valid");
+function setPositiveValidation(field){
+    field.classList.add("is-valid");
 }
 
-function setNagativeValidation(entity) {
-    entity.classList.add("is-invalid");
+function setNagativeValidation(field) {
+    field.classList.add("is-invalid");
 }
 
 function validateSelects(selects){
@@ -114,8 +140,9 @@ function checkSelect(select) {
     return select.value !== "Choose";
 }
 
-function removeAllValidation() {
+function cleanAllValidation() {
     cleanFieldsValidation(fields);
     cleanFieldsValidation(selects);
     cleanFieldValidation(phoneNumber);
+    cleanDatesValidation(startDate,endDate);
 }
